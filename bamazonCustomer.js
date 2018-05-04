@@ -33,7 +33,7 @@ function startPrompt(){
         {
           type: "input",
           name: "productId",
-          message: "Which product would you like to purchase?"
+          message: "Which product would you like to purchase? (Enter product id)"
         },{
             type: "input",
             name: "quantity",
@@ -52,3 +52,5 @@ function startPrompt(){
       })
 }
 displayProducts();
+
+// Module.exports= displayProducts();
