@@ -52,5 +52,3 @@ function startPrompt(){
       })
 }
 displayProducts();
-
-// Module.exports= displayProducts();

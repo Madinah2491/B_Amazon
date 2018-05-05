@@ -20,13 +20,21 @@ connection.connect(function(err) {
 
 
 var viewProducts= function(){
-    connection.query("SELECT * from products", function (err, result, fields) {
+    connection.query("SELECT id, product_name, price, stock_quantity from products", function (err, result, fields) {
         if (err) throw err;
         console.log(result);
     })
 }
 var viewInventory = function(){
-    connection.query("SELECT stock_quantity <5 from products", function(err, result, fields){
+    connection.query("SELECT * from products WHERE stock_quantity <5", function(err, result, fields){
+        if (err) throw err;
+        console.log(result);
+    })
+}
+
+var addInventory = function(){
+    connection.query("INSERT INTO products (product_name, stock_quantity) VALUES ('answers.addInventory', 'answers.addStockQuantity')", function(err, result, fields){
+        connection.query(sql, function (err, result) {
         if (err) throw err;
         console.log(result);
     })
@@ -34,31 +42,36 @@ var viewInventory = function(){
 
 function manager(){
     inquirer.prompt({
-        name:"saleItems",//: displayProducts ,
+        name:"saleItems",
         type:"rawlist",
         message:"View items for sale",
-        choices:["yes", "no, view low inventory"]
+        choices:["yes", "no, view low inventory", "other"]
     }).then(function(answer){
         if (answer.saleItems=="yes"){
             viewProducts();
         }else { 
             viewInventory();
+        }else {
+            inventory();
         }
     })
-};    
+});    
+
+function inventory(){
+    inquirer.prompt({
+        name:"moreInventory",
+        type:"multi",
+        message:"Would you like to restock inventory?",
+        choices:["yes", "no, add new product"]
+    }).then(function(answer){
+        if (answer.moreInventory == "yes"){
+            addInventory();
+        }else {
+            new
+        }
+    })
+}
 manager();    
-
-//   * View Products for Sale
-//   * View Low Inventory
-  
-//   * Add to Inventory
-  
-//   * Add New Product
-// INSERT INTO products (product_name, department_name, price, stock_quantity)
-
-// * If a manager selects `View Products for Sale`: the item IDs, names, prices, and quantities.
-
-// * If a manager selects `View Low Inventory`, then it should list all items with an inventory count lower than five.
 
 // * If a manager selects `Add to Inventory`, your app should display a prompt that will let the manager "add more" of any item currently in the store.
 
