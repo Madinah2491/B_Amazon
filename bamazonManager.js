@@ -79,20 +79,20 @@ manager();
 //     })
 // });    
 
-// // function inventory(){
-// //     inquirer.prompt({
-// //         name:"moreInventory",
-// //         type:"multi",
-// //         message:"Would you like to restock inventory?",
-// //         choices:["yes", "no, add new product"]
-// //     }).then(function(answer){
-// //         if (answer.moreInventory == "yes"){
-// //             addInventory();
-// //         }else {
-// //             new
-// //         }
-// //     })
-// // }
+// function inventory(){
+//     inquirer.prompt({
+//         name:"moreInventory",
+//         type:"multi",
+//         message:"Would you like to restock inventory?",
+//         choices:["yes", "no, add new product"]
+//     }).then(function(answer){
+//         if (answer.moreInventory == "yes"){
+//             addInventory();
+//         }else {
+//             new
+//         }
+//     })
+// }
 // manager();    
 
 // // * If a manager selects `Add to Inventory`, your app should display a prompt that will let the manager "add more" of any item currently in the store.
